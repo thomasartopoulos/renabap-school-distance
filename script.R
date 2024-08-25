@@ -4,12 +4,15 @@ library(feather)
 library(fst)
 library(furrr)
 
-setwd('~/renabap_barrios')
+setwd('~/renabap-school-distance')
 
 # Load datasets
 escuelas <- st_read('data/establecimientos-educativos.geojson')
 barrios <- st_read('data/renabap-2023-12-06.geojson')
 amba <- st_read("http://ideconurbano.ungs.edu.ar/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AAMBA&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326")
+
+amba_df <- as.data.frame(amba)
+write.csv(amba_df, "output/amba.csv", row.names = FALSE)
 
 # Transform to UTM
 utm_crs <- 32633
@@ -49,6 +52,7 @@ if (nrow(duplicate_barrios) > 0) {
 # Convert to data.table
 escuelas_dt <- as.data.table(escuelas_inside_amba)
 barrios_dt <- as.data.table(barrios_inside_amba)
+
 
 # Get unique school types
 school_types <- unique(escuelas_dt[, .(modalidad, nivel)])

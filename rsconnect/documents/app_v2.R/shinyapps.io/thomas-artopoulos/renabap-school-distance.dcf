@@ -1,0 +1,12 @@
+name: renabap-school-distance
+title: renabap-school-distance
+username: thomas-artopoulos
+account: thomas-artopoulos
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12518628
+bundleId: 9024792
+url: https://thomas-artopoulos.shinyapps.io/renabap-school-distance/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
